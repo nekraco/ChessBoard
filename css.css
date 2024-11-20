@@ -1,0 +1,68 @@
+
+html {
+	background: #555;
+}
+.el {
+	width: 100px;
+	height: 100px;
+	background: crimson;
+
+	//position: relative;
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	//margin: auto;
+}
+
+body {
+	//position: absolute;
+	width: 98vw;
+	height: 98vh;
+	margin: 0;
+	//border: solid 4px orange;
+}
+
+.par {
+	width: 200px;
+	height: 200px;
+	background: darkseagreen;
+	margin: 100px auto;
+}
+
+img {
+	width: 70px;
+	height: 70px;
+	opacity: 0.1;
+}
+
+.divImg {
+	width: 20vw;
+	height: 20vw;
+	border: solid 1px red;
+	/*background-image: url("sh.jpg");*/
+	background: #5599cc;
+	//clip-path: polygon(0 0, 20% 10%, 50% 30%, 5% 80%);
+	cursor: pointer;
+	//box-sizing: border-box;
+}
+
+.canvas{
+	width: 70px;
+	height: 70px;
+	//border: solid 1px #222;
+	//background: #777;
+	//background: transparent;
+	opacity: 1;
+	//clip-path: inset(120px);
+	cursor: pointer;
+
+}
+
+#c0 {
+	background: #666;
+}
+
+.svg-shape {
+	clip-path: url(#my-shape);
+}

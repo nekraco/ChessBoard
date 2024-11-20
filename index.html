@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sha</title>
+	
+	<link rel="stylesheet" href="css.css">
+	<link rel="stylesheet" href="fieldCss.css">
+
+</head>
+<body>
+
+<!--<div class="el" draggable="true">абс</div>-->
+<!--<div class="par"></div>-->
+<!--<div class="aaa">12345</div>-->
+
+<!--chess - шахматы-->
+<div id="chessGame">
+		<canvas id="c0" width="200px" height="200px"></canvas>
+		<img src="sh.jpg" alt="">
+	<div class="divImg"></div>
+	<svg>
+		<line x1="0" y1="0" x2="200" y2="200" stroke-width="10"
+			  stroke="rgb(199,88,0)"/>
+	</svg>
+	
+</div>
+
+<script src="js.js"></script>
+<script src="cl.js"></script>
+<script src="canvas.js"></script>
+<script>
+	// let c = document.getElementById('c0');
+	// let ctx = c.getContext('2d');
+	// ctx.beginPath();
+	// ctx.moveTo(5, 5);
+	// ctx.lineTo(200, 100);
+	// ctx.stroke();
+
+	let divI = document.querySelector('.divImg');
+	divI.style.background = '#a56';
+	//divI.innerHTML = '7777';
+	divI.draggable = true;
+	//divI.style.clipPath =
+		//'polygon( 0px 300px, 150px 0px, 300px 300px)';
+
+	let arCl = ['polygon(', ' 0%', ' 100%,', ' 50%', ' 0', ',',
+	  ' 100%', ' 100%', ')']
+	let strCl = arCl.join('');
+		console.log(strCl)
+		divI.style.clipPath = strCl;
+		
+		
+	let arrDraw = []
+
+	//divI.style.clipPath =
+	//   'path("M213.1,6.7' +
+	//   'c-32.4-14.4-73.7,0-88.1,30.6' +
+	//   'C110.6,4.9,67.5-9.5,36.9,6.7' +
+	//   'C2.8,22.9-13.4,62.4,13.5,110.9 ' +
+	//   'C33.3,145.1,67.5,170.3,125,217' +
+	//   'c59.3-46.7,93.5-71.9,111.5-106.1' +
+	//   'C263.4,64.2,247.2,22.9,213.1,6.7' +
+	//   'z")';
+	//divI.style.clipPath = 'path("M 10 210 L 110 10 L 210 210 z")';
+
+</script>
+
+</body>
+</html>
