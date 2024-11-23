@@ -52,7 +52,7 @@ img {
 	height: 70px;
 	//border: solid 1px #222;
 	//background: #777;
-	//background: transparent;
+	background: transparent;
 	opacity: 1;
 	//clip-path: inset(120px);
 	cursor: pointer;
@@ -61,4 +61,12 @@ img {
 
 .canvasField {
 	background: #777;
+	//background: transparent;
+	/*width: 70px;*/
+	/*height: 70px;*/
+}
+
+.old {
+	width: 70px;
+	height: 70px;
 }
