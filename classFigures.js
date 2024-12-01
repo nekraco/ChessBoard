@@ -1,32 +1,36 @@
 class Figures {
 	constructor(sizeCanvasFinal) {
 		this.fs = new Functions();
-		this.parent = document.getElementById('chessGame');
+		this.chessGame = document.getElementById('chessGame');
 
 		//sizes
 		this.sizeCanvasInitial = 300;
 		this.sizeCanvasFinal = sizeCanvasFinal;
 		this.coeffSize = this.sizeCanvasFinal / this.sizeCanvasInitial;
-		this.lineWidthInitial = 10;
+		this.lineWidthInitial = 12;
 		this.lineWidthFinal = this.lineWidthInitial * this.coeffSize;
 
-		//colors
-		this.colorLight = '#b94';
-		this.colorDark = '#000';
+		//colorsFill
+		this.colorLightFill = '#b94';
+		this.colorDarkFill = '#000';
+
+		//colorsStroke
+		this.colorLightStroke = '#333';
+		this.colorDarkStroke = '#000';
 
 	}
 
 	createCanvas(x, y, w, h) {
-		this.canvas = document.createElement('canvas');
-		this.canvas.draggable = true;
-		this.canvas.style.position = 'absolute';
-		this.canvas.classList.add('canvasField');
-		this.canvas.style.left = x;
-		this.canvas.style.top = y;
-		this.canvas.width = w;
-		this.canvas.height = h;
-		this.parent.appendChild(this.canvas);
-		return this.canvas.getContext('2d');
+		let canvas = document.createElement('canvas');
+		canvas.draggable = true;
+		canvas.style.position = 'absolute';
+		canvas.classList.add('canvasField');
+		canvas.style.left = x + 'px';
+		canvas.style.top = y + 'px';
+		canvas.width = w;
+		canvas.height = h;
+		this.chessGame.appendChild(canvas);
+		return canvas;
 	}
 
 	getArCoordsMirror(arCoords) {
@@ -97,26 +101,27 @@ class Figures {
 	}
 
 	createPawn(left, top, color) {
-		let colorFig = color === '+' ? this.colorLight : this.colorDark;
+		let colorFill = color === '+' ? this.colorLightFill : this.colorDarkFill;
+		let colorStroke = color === '+' ? this.colorDarkStroke : this.colorLightStroke;
 		let size = this.sizeCanvasFinal;
 
-		this.ctx = this.createCanvas(left, top, size, size);
+		let canvas = this.createCanvas(left, top, size, size);
+		this.ctx = canvas.getContext('2d');
 		//drawPolygon(arCoords, typeDraw, mirror, color, lineWidth)
 		//drawArc(arCoords, radius, typeDraw, mirror, vector, color, lineWidth)
 
 		//Сначала закрашиваем, потом рисуем контур!!!
 		//стрела вверх - закраска
-		this.drawPolygon([115, 240, 150, 110, 150, 240], 'fill',
-			true, colorFig);
+		this.drawPolygon([115, 240, 150, 110, 150, 240], 'fill', true, colorFill);
 		//стрела вверх - контур
 		this.drawPolygon([115, 240, 150, 110, 150, 240], 'stroke+',
-			true, colorFig);
+			true, colorFill);
 
 		//раскрашивание головы
-		this.drawArc([153, 64, 140, 120], 29, 'stroke+', true, '+-', colorFig);
-		this.drawArc([153, 64, 140, 120], 29, 'fill', true, '+-', colorFig);
+		this.drawArc([153, 64, 140, 120], 29, 'stroke+', true, '+-', colorFill);
+		this.drawArc([153, 64, 140, 120], 29, 'fill', true, '+-', colorFill);
 		//рисуем контур головы
-		this.drawArc([152, 62, 130, 123], 35, 'stroke', true, '+-', this.colorDark);
+		this.drawArc([152, 62, 130, 123], 35, 'stroke', true, '+-', colorStroke);
 
 		//раскрашивание тела
 		let x1 = 131;
@@ -124,18 +129,20 @@ class Figures {
 		for (let i = 0; i < 6; i++) {
 			x1 += this.lineWidthFinal / 5;
 			x2 += this.lineWidthFinal / 5;
-			this.drawArc([x1, 120, x2, 240], 150, 'stroke', true, '-+', colorFig);
+			this.drawArc([x1, 120, x2, 240], 150, 'stroke', true, '-+', colorFill);
 		}
 		//рисуем контур туловища
 		this.drawArc([130, 120, 89, 240], 150, 'stroke', true, '-+',
-			this.colorDark);
+			colorStroke);
 
 		//закрашиваем подставку
 		this.drawPolygon([85, 260, 90, 240, 210, 240, 215, 260], 'fill',
-			false, colorFig);
+			false, colorFill);
 		//рисуем контур подставки
 		this.drawPolygon([85, 260, 90, 240, 210, 240, 215, 260], 'stroke+',
-			false, this.colorDark);
+			false, colorStroke);
+
+		return canvas;
 	}
 
 }
@@ -143,10 +150,10 @@ class Figures {
 // *************************************************************************
 
 
-let fig = new Figures(50);
+//let fig = new Figures(50);
 
-fig.createPawn('50px', '50px', '+');
-fig.createPawn('50px', '200px');
+//fig.createPawn('50px', '50px', '+');
+//fig.createPawn('50px', '200px');
 
 
 

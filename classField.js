@@ -24,8 +24,8 @@ class Field {
 
 		this.createFieldCells(typeField, this.left, this.top, this.firstCellColor);
 
-		this.arCoordsX = this.fillArCoords(this.left);
-		this.arCoordsY = this.fillArCoords(this.top);
+		this.arCoordsX = this.fillArCoords(this.left, this.xNumCells);
+		this.arCoordsY = this.fillArCoords(this.top, this.yNumCells);
 
 	}
 
@@ -69,26 +69,26 @@ class Field {
 		}
 	}
 
-	fillArCoords(coordStart) {
+	fillArCoords(coordStart, numCells) {
 		let ar = [coordStart];
-		for (let i = 0; i < this.xNumCells; i++) {
+		for (let i = 0; i < numCells; i++) {
 			ar.push(coordStart += this.sizeCell);
 		}
 		return ar;
 	}
 
-	createVVV(xxx, yyy, bg, text) {
-		this.vvv = this.createElement(this.field, 'vvv');
-		this.vvv.draggable = true;
-		this.vvv.style.background = bg;
-		this.vvv.style.width = this.sizeCell + 'px';
-		this.vvv.style.height = this.sizeCell + 'px';
-		this.vvv.innerHTML = text;
-		this.vvv.style.left = this.arCoordsX[xxx] + 'px';
-		this.vvv.style.top = this.arCoordsY[yyy] + 'px';
-
-		return this.vvv;
-	}
+	// createVVV(xxx, yyy, bg, text) {
+	// 	this.vvv = this.createElement(this.field, 'vvv');
+	// 	this.vvv.draggable = true;
+	// 	this.vvv.style.background = bg;
+	// 	this.vvv.style.width = this.sizeCell + 'px';
+	// 	this.vvv.style.height = this.sizeCell + 'px';
+	// 	this.vvv.innerHTML = text;
+	// 	this.vvv.style.left = this.arCoordsX[xxx] + 'px';
+	// 	this.vvv.style.top = this.arCoordsY[yyy] + 'px';
+	//
+	// 	return this.vvv;
+	// }
 
 }
 
